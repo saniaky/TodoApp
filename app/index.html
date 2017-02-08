@@ -16,45 +16,38 @@
     <!-- Custom stylesheets -->
     <link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="TodoApp" ng-cloak>
+<body ng-app="TodoApp" ng-controller="HomeController" ng-cloak>
 
 
-<div layout="column" flex="40" flex-offset="30" layout-align="center">
+<div layout="column" flex="30" flex-offset="35">
     <h3>ToDo Sample App</h3>
 
-    <div ng-controller="HomeController">
-        <ul>
-            <li ng-repeat="todo in todos">
-                <input type="checkbox" ng-model="todo.checked">
-                {{todo.text}}
-                <button ng-click="remove($index)"><i class="fa fa-trash"></i></button>
-            </li>
-        </ul>
-
-        <form action="#">
-            <label for="todoText">Text:</label>
-            <input type="text" ng-model="text" id="todoText">
-            <button ng-click="add(text)">Add</button>
-        </form>
-        <button ng-click="selectAll()">Select all</button>
-        <button ng-click="removeSelected()">Remove selected</button>
-        <button ng-click="removeAll()">Remove all</button>
-
-        Selected todos: {{selectedTodos}}
-    </div>
+    <md-list>
+        <md-list-item ng-repeat="item in todos">
+            <md-checkbox ng-model="item.checked" aria-label="Checked"></md-checkbox>
+            <div class="md-list-item-text">
+                <span>{{item.text}}</span>
+                <span aria-label="Delete" class="md-secondary" ng-click="remove($index)"><i class="fa fa-trash"></i></span>
+            </div>
+        </md-list-item>
+    </md-list>
 
     <div layout="row">
+        <md-input-container flex="80">
+            <label>Text</label>
+            <input ng-model="text">
+        </md-input-container>
 
-        <div layout="column">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Note text</label>
-                <input ng-model="user.firstName">
-            </md-input-container>
+        <div flex="20">
+            <md-button class="md-raised md-primary" ng-click="add(text)" ng-disabled="!text">Add</md-button>
         </div>
+    </div>
 
-        <div layout="column">
-            <md-button class="md-raised md-primary">Primary Button</md-button>
-        </div>
+    <div>
+        <md-button class="md-primary" ng-click="selectAll()">Select all</md-button>
+        <md-button class="md-primary" ng-click="deselectAll()">Deselect all</md-button>
+        <md-button class="md-accent" ng-click="removeSelected()">Remove selected</md-button>
+        <md-button class="md-warn" ng-click="removeAll()">Remove all</md-button>
     </div>
 </div>
 

@@ -19,7 +19,15 @@ angular.module('TodoApp.controllers', []).controller('HomeController', function 
     };
 
     $scope.selectAll = function () {
+        for (var i = 0; i < $scope.todos.length; i++) {
+           $scope.todos[i].checked = true;
+        }
+    };
 
+    $scope.deselectAll = function () {
+        for (var i = 0; i < $scope.todos.length; i++) {
+            $scope.todos[i].checked = false;
+        }
     };
 
     $scope.remove = function (index) {
