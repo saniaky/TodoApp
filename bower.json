@@ -1,0 +1,11 @@
+{
+  "name": "ToDo",
+  "description": "",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "1.6.2",
+    "font-awesome": "^4.7.0",
+    "angular-material": "^1.1.3"
+  }
+}

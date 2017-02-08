@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ToDo App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+
+    <!-- Custom stylesheets -->
+    <link rel="stylesheet" href="app.css">
+</head>
+<body ng-app="TodoApp" ng-cloak>
+
+
+<div layout="column" flex="40" flex-offset="30" layout-align="center">
+    <h3>ToDo Sample App</h3>
+
+    <div ng-controller="HomeController">
+        <ul>
+            <li ng-repeat="todo in todos">
+                <input type="checkbox" ng-model="todo.checked">
+                {{todo.text}}
+                <button ng-click="remove($index)"><i class="fa fa-trash"></i></button>
+            </li>
+        </ul>
+
+        <form action="#">
+            <label for="todoText">Text:</label>
+            <input type="text" ng-model="text" id="todoText">
+            <button ng-click="add(text)">Add</button>
+        </form>
+        <button ng-click="selectAll()">Select all</button>
+        <button ng-click="removeSelected()">Remove selected</button>
+        <button ng-click="removeAll()">Remove all</button>
+
+        Selected todos: {{selectedTodos}}
+    </div>
+
+    <div layout="row">
+
+        <div layout="column">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Note text</label>
+                <input ng-model="user.firstName">
+            </md-input-container>
+        </div>
+
+        <div layout="column">
+            <md-button class="md-raised md-primary">Primary Button</md-button>
+        </div>
+    </div>
+</div>
+
+<!-- Angularjs -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+
+<!-- App -->
+<script src="app.js"></script>
+<script src="components/controller/homeController.js"></script>
+
+</body>
+</html>
